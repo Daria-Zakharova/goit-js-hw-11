@@ -149,14 +149,11 @@ body {
 .gallery__card a {
     min-height: 100%;
 }
+
 .gallery__card:hover {
     box-shadow: 0 2px 5px rgba(0,0,0,0.5), 0 4px 6px rgba(0,0,0,0.5);
 }
 
-.gallery__img {
-    max-width: 100%;
-    object-fit: cover;
-}
 
 .gallery__info {
     position: absolute;
@@ -180,7 +177,6 @@ body {
     text-align: center;
     font-weight: 300;
     line-height: 1.2;
-
 
     color: #050505ef;
 }
