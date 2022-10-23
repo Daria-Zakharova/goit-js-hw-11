@@ -1,0 +1,214 @@
+* {
+    box-sizing: border-box;
+}
+
+p {
+    padding: 0;
+    margin: 0;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+body {
+    margin: 0;
+    padding: 20vh 0 0;
+
+    font-family: 'Kanit', sans-serif;
+
+    background-color: rgb(77, 77, 77);
+    background-image: url(./images/dark-metal-seamless-texture-repeating-background-web-page-fill_167184-78.webp);
+    background-size: 420px;
+
+}
+
+.hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0, 0, 0, 0);
+    overflow: hidden;
+}
+
+.search-form__wrap {
+    position: fixed;
+    top: 0%;
+    left: 0;
+    z-index: 3;
+    width: 100%;
+    height: 14vh;    
+    padding: 4vh 0 0 0;
+    background-image: linear-gradient(#000000c4 30%, rgba(0, 0, 0, 0.274) 80%, transparent 100%);
+}
+
+.search-form {
+    display: flex;
+    gap: 15px;
+    width: fit-content;
+    margin: 0 auto;  
+}
+
+.search-form__input {
+    height: 34px;
+    padding-left: 10px;    
+    border: 1px #090909 solid;
+    border-radius: 8px;
+    background: linear-gradient(-185deg, #242424b2, #97979723);
+    box-shadow: inset -1px -1px 0 #5e5e5e, inset 1px 1px 0 #1c1c1c;
+    color: #ffffffc0;
+}
+
+.icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;    
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+    transform: translate(-50%, -50%);
+}
+
+.processing.icon {
+    animation: flow 1000ms linear 0ms infinite normal forwards;
+}
+
+.button {
+    position: relative;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px #090909 solid;
+    background: linear-gradient(145deg, #171717, #444245);
+    box-shadow: inset 1px 1px 0 #7d7c7e, inset -1px -1px 0 #1c1c1c;
+    color: #c2c2c2;
+    transition: box-shadow 300ms linear;
+    
+}
+
+.button.load-more-btn {
+    display: block;
+    margin: 15px auto;
+}
+
+.button:not([disabled]):hover {
+    background: linear-gradient(-185deg, #131313, #444245);
+    box-shadow: inset -1px -1px 0 #5e5e5e, inset 1px 1px 0 #1c1c1c;
+    color: #ffffff;
+}
+
+.button::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: inherit;
+    background: linear-gradient(145deg, #262626, #606060);
+    width: 38px;
+    height: 38px;
+    z-index: -1;
+    box-shadow: 11px 11px 22px #141414, -11px -11px -22px #525252;
+}
+
+.button[disabled] {
+    background: linear-gradient(-185deg, #131313, #444245);
+    box-shadow: inset -1px -1px 0 #5e5e5e, inset 1px 1px 0 #1c1c1c;
+    color: #757575;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 10px;
+}
+
+.gallery__card {    
+    position: relative;
+    flex-basis: calc((100% - 30px)/4);
+    display: flex;
+    flex-direction: column;
+    background-color: #00000075;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.gallery__card a {
+    min-height: 100%;
+}
+.gallery__card:hover {
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5), 0 4px 6px rgba(0,0,0,0.5);
+}
+
+.gallery__img {
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.gallery__info {
+    position: absolute;
+    bottom: 0;
+
+    width: 100%;
+    height: 2.8em;
+    display: flex;
+    justify-content: space-between;
+    background-image: linear-gradient(145deg, #00000028 0%, #ffffff46 100%), url(./images/dark-metal-seamless-texture-repeating-background-web-page-fill_167184-78.webp);
+    background-size: cover;
+}
+
+.gallery__info-item {
+    flex-basis: calc(100%/4);
+    padding: 5px 0;
+
+    display: flex;
+    flex-direction: column;
+
+    text-align: center;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.2;
+
+
+    color: #050505ef;
+}
+
+.gallery__info-item b {
+    font-weight: 500;
+}
+
+.gallery__info-item:not(:last-child) {
+    border-right: 1px solid black;
+}
+
+@keyframes flow {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+    30% {
+        opacity: 0;
+    }
+    33% {
+        opacity: 0;
+        transform: translate(-50%, 90%);
+    }
+    34% {
+        opacity: 0;
+        transform: translate(-50%, -160%);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
