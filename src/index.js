@@ -69,6 +69,9 @@ async function loadMoreImages() {
     page === pages && loadBtn.hide() || loadBtn.enable();
     
     renderMarkup(pictures);
+
+    scroll();
+
     lightbox.refresh();
 }
 
@@ -81,4 +84,17 @@ function reset() {
     page = 1;
     refs.gallery.innerHTML = '';    
     loadBtn.hide(); 
+}
+
+function scroll() {
+    const {height: bodyHeight} = document.querySelector('body').getBoundingClientRect();
+    document.querySelector('body').style.height = `${bodyHeight + 500}px`;
+
+    const { height: cardHeight } = document.querySelector(".gallery").firstElementChild.getBoundingClientRect();
+    console.log(cardHeight);
+    setTimeout(window.scrollBy, 300, {
+        top: cardHeight * 2,
+        left: 0,
+        behavior: "smooth",
+        });
 }
