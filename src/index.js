@@ -20,16 +20,16 @@ let lightbox = null;
 let page = 1;
 
 refs.searchForm.addEventListener('submit', onSubmit);
-refs.searchInput.addEventListener('change', onChange);
 refs.searchInput.addEventListener('input', debounce(onInput, 300));
 refs.loadMoreBtn.addEventListener('click', loadMoreImages);
 
 async function onSubmit(e) {
     e.preventDefault();
+    reset();
 
     refs.searchBtn.disabled = true;
     
-    query = refs.searchInput.value;
+    query = e.currentTarget.elements.searchQuery.value;
 
     const picturesObj = await getImages(query, page);
     const pictures = await picturesObj.data.hits;
@@ -47,12 +47,6 @@ async function onSubmit(e) {
 
     renderMarkup(pictures);   
     lightbox = new SimpleLightbox('.gallery a');
-}
-
-function onChange () {
-    page = 1;
-    refs.gallery.innerHTML = '';    
-    loadBtn.hide();    
 }
 
 function onInput() {
@@ -80,4 +74,10 @@ function renderMarkup(pictures) {
     if(pictures.length < 40) {
         loadBtn.hide();
     }
+}
+
+function reset() {
+    page = 1;
+    refs.gallery.innerHTML = '';    
+    loadBtn.hide(); 
 }
