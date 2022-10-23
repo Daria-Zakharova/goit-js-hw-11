@@ -41,12 +41,14 @@ async function onSubmit(e) {
     const picturesAmount = await picturesObj.data.totalHits;
     Notify.success(`Hooray! We found ${picturesAmount} images.`);
     
-    if(pictures.length < picturesAmount) {
-        loadBtn.show();
-    }
-
     renderMarkup(pictures);   
-    lightbox = new SimpleLightbox('.gallery a');
+    lightbox = new SimpleLightbox('.gallery a', {
+        captionsData: 'alt',
+        showCounter: false,
+    });
+    
+    pictures.length < picturesAmount && loadBtn.show();
+    
 }
 
 function onInput() {
