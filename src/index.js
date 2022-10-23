@@ -18,6 +18,7 @@ const loadBtn = new loadMoreBtn({selector: '.load-more-btn', hidden: true});
 let query = null;
 let lightbox = null;
 let page = 1;
+let pages = 0;
 
 refs.searchForm.addEventListener('submit', onSubmit);
 refs.searchInput.addEventListener('input', debounce(onInput, 300));
@@ -48,6 +49,7 @@ async function onSubmit(e) {
     });
     
     pictures.length < picturesAmount && loadBtn.show();
+    pages = Math.ceil(picturesAmount / 40);
     
 }
 
@@ -64,8 +66,8 @@ async function loadMoreImages() {
     page += 1;
     loadBtn.disable();
     const pictures = await (await getImages(query, page)).data.hits;
-    loadBtn.enable();
-
+    page === pages && loadBtn.hide() || loadBtn.enable();
+    
     renderMarkup(pictures);
     lightbox.refresh();
 }
@@ -73,9 +75,6 @@ async function loadMoreImages() {
 function renderMarkup(pictures) {
     const markup = createGalleryCard(pictures);
     refs.gallery.insertAdjacentHTML('beforeend', markup);
-    if(pictures.length < 40) {
-        loadBtn.hide();
-    }
 }
 
 function reset() {
