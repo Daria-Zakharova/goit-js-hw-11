@@ -15,9 +15,10 @@ img {
 
 body {
     margin: 0;
-    padding: 20vh 0 0;
+    padding: 150px 0 0;
 
     font-family: 'Kanit', sans-serif;
+    font-size: 16px;
 
     background-color: rgb(77, 77, 77);
     background-image: url(./images/dark-metal-seamless-texture-repeating-background-web-page-fill_167184-78.webp);
@@ -44,21 +45,23 @@ body {
     left: 0;
     z-index: 3;
     width: 100%;
-    height: 14vh;    
-    padding: 4vh 0 0 0;
+    height: 150px;    
+    padding: 50px 0;
     background-image: linear-gradient(#000000c4 30%, rgba(0, 0, 0, 0.274) 80%, transparent 100%);
 }
 
 .search-form {
     display: flex;
-    gap: 15px;
+    gap: 10px;
     width: fit-content;
     margin: 0 auto;  
 }
 
 .search-form__input {
-    height: 34px;
-    padding-left: 10px;    
+    height: 50px;
+    min-width: 250px;
+    padding-left: 10px;
+    font-size: 16px;
     border: 1px #090909 solid;
     border-radius: 8px;
     background: linear-gradient(-185deg, #242424b2, #97979723);
@@ -71,8 +74,8 @@ body {
     top: 50%;
     left: 50%;    
     display: inline-block;
-    width: 1em;
-    height: 1em;
+    width: 1.5em;
+    height: 1.5em;
     stroke-width: 0;
     stroke: currentColor;
     fill: currentColor;
@@ -85,8 +88,8 @@ body {
 
 .button {
     position: relative;
-    width: 34px;
-    height: 34px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     border: 1px #090909 solid;
     background: linear-gradient(145deg, #171717, #444245);
@@ -115,8 +118,8 @@ body {
     transform: translate(-50%, -50%);
     border-radius: inherit;
     background: linear-gradient(145deg, #262626, #606060);
-    width: 38px;
-    height: 38px;
+    width: 50px;
+    height: 50px;
     z-index: -1;
     box-shadow: 11px 11px 22px #141414, -11px -11px -22px #525252;
 }
@@ -160,7 +163,7 @@ body {
     bottom: 0;
 
     width: 100%;
-    height: 2.8em;
+    height: 3em;
     display: flex;
     justify-content: space-between;
     background-image: linear-gradient(145deg, #00000028 0%, #ffffff46 100%), url(./images/dark-metal-seamless-texture-repeating-background-web-page-fill_167184-78.webp);
@@ -176,7 +179,6 @@ body {
 
     text-align: center;
     font-weight: 300;
-    font-size: 14px;
     line-height: 1.2;
 
 
