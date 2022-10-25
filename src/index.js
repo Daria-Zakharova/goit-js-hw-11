@@ -32,25 +32,29 @@ async function onSubmit(e) {
     
     query = e.currentTarget.elements.searchQuery.value;
 
-    const picturesObj = await getImages(query, page);
-    const pictures = await picturesObj.data.hits;
+    try {
+        const picturesObj = await getImages(query, page);
+        const pictures = await picturesObj.data.hits;
 
-    if (!pictures.length) {
-        return Notify.failure("Sorry, there are no images matching your search query. Please try again.");
+        if (!pictures.length) {
+            return Notify.failure("Sorry, there are no images matching your search query. Please try again.");
+        }
+    
+        const picturesAmount = await picturesObj.data.totalHits;
+        Notify.success(`Hooray! We found ${picturesAmount} images.`);
+    
+        renderMarkup(pictures);   
+        lightbox = new SimpleLightbox('.gallery a', {
+            captionsData: 'alt',
+            showCounter: false,
+        });
+    
+        pictures.length < picturesAmount && loadBtn.show();
+        pages = Math.ceil(picturesAmount / 40);
     }
-    
-    const picturesAmount = await picturesObj.data.totalHits;
-    Notify.success(`Hooray! We found ${picturesAmount} images.`);
-    
-    renderMarkup(pictures);   
-    lightbox = new SimpleLightbox('.gallery a', {
-        captionsData: 'alt',
-        showCounter: false,
-    });
-    
-    pictures.length < picturesAmount && loadBtn.show();
-    pages = Math.ceil(picturesAmount / 40);
-    
+    catch(e) {
+        Notify.info(`Something is wrong. ${e.message}`);
+    }    
 }
 
 function onInput() {
@@ -64,15 +68,20 @@ function onInput() {
 
 async function loadMoreImages() {
     page += 1;
-    loadBtn.disable();
-    const pictures = await (await getImages(query, page)).data.hits;
-    page === pages && loadBtn.hide() || loadBtn.enable();
+    try {    
+        loadBtn.disable();
+        const pictures = await (await getImages(query, page)).data.hits;
+        page === pages && loadBtn.hide() || loadBtn.enable();
     
-    renderMarkup(pictures);
+        renderMarkup(pictures);
 
-    scroll();
+        scroll();
 
-    lightbox.refresh();
+        lightbox.refresh();
+    }
+    catch(e) {
+        Notify.info(`Something is wrong. ${e.message}`);
+    }
 }
 
 function renderMarkup(pictures) {
