@@ -106,7 +106,7 @@ function reset() {
 }
 
 function scroll() {
-    const height = document.documentElement.clientHeight;
+    const height = document.documentElement.clientHeight * 0.9;
     const bodyHeight = document.querySelector('html').offsetHeight;
     document.querySelector('body').style.minHeight = `${bodyHeight + height}px`;    
     setTimeout(window.scrollBy, 300, {
