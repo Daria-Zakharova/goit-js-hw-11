@@ -102,14 +102,15 @@ function renderMarkup(pictures) {
 function reset() {
     page = 1;
     refs.gallery.innerHTML = '';    
-    loadBtn.hide(); 
+    loadBtn.hide();
+    document.querySelector('body').removeAttribute('style');
 }
 
 function scroll() {
     const height = document.documentElement.clientHeight * 0.9;
     const bodyHeight = document.querySelector('html').offsetHeight;
     document.querySelector('body').style.minHeight = `${bodyHeight + height}px`;    
-    setTimeout(window.scrollBy, 300, {
+    window.scrollBy({
         top: height,
         left: 0,
         behavior: "smooth",
