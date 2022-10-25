@@ -1,4 +1,4 @@
-export class searchBtn {
+export class spinner {
 
     constructor(selector) {
         this.icon = selector.querySelector('.icon');

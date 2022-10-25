@@ -5,7 +5,7 @@ import debounce from 'lodash.debounce';
 import createGalleryCard from './js/templates/gallery-card.hbs';
 import { getImages } from "./js/get-images";
 import { loadMoreBtn } from './js/load-more-btn';
-import { searchBtn } from './js/search-btn';
+import { spinner } from './js/spinner';
 
 const refs = {
     searchForm: document.querySelector('.search-form'),
@@ -16,7 +16,7 @@ const refs = {
 }
 
 const loadBtn = new loadMoreBtn({selector: '.load-more-btn', hidden: true});
-const spinnerSearchBtn = new searchBtn(refs.searchBtn);
+const spinnerSearchBtn = new spinner(refs.searchBtn);
 let query = null;
 let lightbox = null;
 let page = 1;
