@@ -106,13 +106,11 @@ function reset() {
 }
 
 function scroll() {
-    const {height: bodyHeight} = document.querySelector('body').getBoundingClientRect();
-    document.querySelector('body').style.height = `${bodyHeight + 500}px`;
-
-    const { height: cardHeight } = document.querySelector(".gallery").firstElementChild.getBoundingClientRect();
-    console.log(cardHeight);
+    const height = document.documentElement.clientHeight;
+    const bodyHeight = document.querySelector('html').offsetHeight;
+    document.querySelector('body').style.minHeight = `${bodyHeight + height}px`;    
     setTimeout(window.scrollBy, 300, {
-        top: cardHeight * 2,
+        top: height,
         left: 0,
         behavior: "smooth",
         });
