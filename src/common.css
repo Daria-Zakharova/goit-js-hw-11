@@ -81,6 +81,19 @@ body {
     transform: translate(-50%, -50%);
 }
 
+.loading.icon {
+    animation: spinner 1500ms linear infinite both;
+}
+
+.loading .icon__search,
+.icon__spinner {
+    display: none;
+}
+
+.loading .icon__spinner {
+    display: block;
+}
+
 .processing.icon {
     animation: flow 1000ms linear 0ms infinite normal forwards;
 }
@@ -220,5 +233,15 @@ body {
     100% {
         opacity: 1;
         transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes spinner {
+    0% {
+        transform: translate(-50%, -50%) rotate(0);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
     }
 }

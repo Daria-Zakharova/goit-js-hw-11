@@ -5,6 +5,7 @@ import debounce from 'lodash.debounce';
 import createGalleryCard from './js/templates/gallery-card.hbs';
 import { getImages } from "./js/get-images";
 import { loadMoreBtn } from './js/load-more-btn';
+import { searchBtn } from './js/search-btn';
 
 const refs = {
     searchForm: document.querySelector('.search-form'),
@@ -15,6 +16,7 @@ const refs = {
 }
 
 const loadBtn = new loadMoreBtn({selector: '.load-more-btn', hidden: true});
+const spinnerSearchBtn = new searchBtn(refs.searchBtn);
 let query = null;
 let lightbox = null;
 let page = 1;
@@ -31,8 +33,10 @@ async function onSubmit(e) {
     refs.searchBtn.disabled = true;
     
     query = e.currentTarget.elements.searchQuery.value;
+    
 
     try {
+        spinnerSearchBtn.loading();
         const picturesObj = await getImages(query, page);
         const pictures = await picturesObj.data.hits;
 
@@ -42,6 +46,7 @@ async function onSubmit(e) {
     
         const picturesAmount = await picturesObj.data.totalHits;
         Notify.success(`Hooray! We found ${picturesAmount} images.`);
+        spinnerSearchBtn.stopLoading();
     
         renderMarkup(pictures);   
         lightbox = new SimpleLightbox('.gallery a', {
@@ -54,6 +59,7 @@ async function onSubmit(e) {
     }
     catch(e) {
         Notify.info(`Something is wrong. ${e.message}`);
+        spinnerSearchBtn.stopLoading();
     }    
 }
 
