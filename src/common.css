@@ -94,6 +94,10 @@ body {
     display: block;
 }
 
+.no-icon .icon {
+    display: none;
+}
+
 .processing.icon {
     animation: flow 1000ms linear 0ms infinite normal forwards;
 }
@@ -222,6 +226,15 @@ body {
 
 .gallery__info-item:not(:last-child) {
     border-right: 1px solid black;
+}
+
+.end {
+    width: fit-content;
+    margin: 0 auto;
+    padding: 5px;
+    border-radius: 8px;
+    background-image: linear-gradient(145deg, #00000028 0%, #ffffff46 100%), url(./images/dark-metal-seamless-texture-repeating-background-web-page-fill_167184-78.webp);
+    background-size: cover;
 }
 
 @keyframes flow {

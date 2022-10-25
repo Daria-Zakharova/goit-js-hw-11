@@ -13,6 +13,7 @@ const refs = {
     searchBtn: document.querySelector('.search-form__btn'),
     gallery: document.querySelector('.gallery'),
     loadMoreBtn: document.querySelector('.load-more-btn'),
+    endMessage: document.querySelector('.end'),
 }
 
 const loadBtn = new loadMoreBtn({selector: '.load-more-btn', hidden: true});
@@ -27,13 +28,11 @@ refs.searchInput.addEventListener('input', debounce(onInput, 300));
 refs.loadMoreBtn.addEventListener('click', loadMoreImages);
 
 async function onSubmit(e) {
-    e.preventDefault();
-    reset();
 
-    refs.searchBtn.disabled = true;
-    
+    e.preventDefault();
     query = e.currentTarget.elements.searchQuery.value;
-    
+    reset(e);
+    refs.searchBtn.disabled = true;
 
     try {
         spinnerSearchBtn.loading();
@@ -57,6 +56,7 @@ async function onSubmit(e) {
         });
     
         pictures.length < picturesAmount && loadBtn.show();
+        pictures.length === picturesAmount && refs.endMessage.classList.remove('hidden');
         pages = Math.ceil(picturesAmount / 40);
     }
     catch(e) {
@@ -81,7 +81,8 @@ async function loadMoreImages() {
         loadBtn.disable();
         const pictures = await (await getImages(query, page)).data.hits;
         page === pages && loadBtn.hide() || loadBtn.enable();
-    
+        page === pages  && refs.endMessage.classList.remove('hidden');
+                
         renderMarkup(pictures);
 
         scroll();
@@ -99,11 +100,13 @@ function renderMarkup(pictures) {
     refs.gallery.insertAdjacentHTML('beforeend', markup);
 }
 
-function reset() {
+function reset(e) {
+    e.currentTarget.reset();
     page = 1;
     refs.gallery.innerHTML = '';    
     loadBtn.hide();
     document.querySelector('body').removeAttribute('style');
+    refs.endMessage.classList.add('hidden');
 }
 
 function scroll() {
@@ -116,4 +119,3 @@ function scroll() {
         behavior: "smooth",
         });
 }
-
