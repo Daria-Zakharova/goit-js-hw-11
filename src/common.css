@@ -17,7 +17,7 @@ body {
     margin: 0;
     padding: 100px 0 0;
     font-family: 'Kanit', sans-serif;
-    font-size: 16px;
+    font-size: 14px;
 
     background-color: rgb(77, 77, 77);
     background-image: url(./images/dark-metal-seamless-texture-repeating-background-web-page-fill_167184-78.webp);
@@ -179,7 +179,17 @@ body {
     .gallery__card {
         flex-basis: calc((100% - 30px)/4);
     }
+}
+
+@media screen and (min-width: 1220px) {
+    body {
+        font-size: 16px;
     }
+    .gallery {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}
 
 .gallery__info {
     position: absolute;
@@ -194,7 +204,7 @@ body {
 
 .gallery__info-item {
     flex-basis: calc(100%/4);
-    padding: 5px 0;
+    padding: 5px 2px;
 
     display: flex;
     flex-direction: column;

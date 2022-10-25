@@ -41,7 +41,9 @@ async function onSubmit(e) {
         const pictures = await picturesObj.data.hits;
 
         if (!pictures.length) {
+            spinnerSearchBtn.stopLoading();
             return Notify.failure("Sorry, there are no images matching your search query. Please try again.");
+            
         }
     
         const picturesAmount = await picturesObj.data.totalHits;
