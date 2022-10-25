@@ -67,8 +67,9 @@ function onInput() {
 }
 
 async function loadMoreImages() {
-    page += 1;
-    try {    
+    
+    try {
+        page += 1;    
         loadBtn.disable();
         const pictures = await (await getImages(query, page)).data.hits;
         page === pages && loadBtn.hide() || loadBtn.enable();
@@ -81,6 +82,7 @@ async function loadMoreImages() {
     }
     catch(e) {
         Notify.info(`Something is wrong. ${e.message}`);
+        loadBtn.enable();
     }
 }
 
@@ -107,3 +109,4 @@ function scroll() {
         behavior: "smooth",
         });
 }
+
