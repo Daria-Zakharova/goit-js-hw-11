@@ -14,7 +14,7 @@ const refs = {
     endMessage: document.querySelector('.end'),
 }
 
-const searchForm = new searchForm({onSubmit});
+new searchForm({onSubmit});
 const loadBtn = new loadMoreBtn({selector: '.load-more-btn', onClick: loadMoreImages, hidden: true});
 const spinnerSearchBtn = new spinner('.search-form__btn .icon');
 
@@ -22,7 +22,6 @@ let query = null;
 let lightbox = null;
 let page = 1;
 let pages = 0;
-
 
 async function onSubmit(e) {
 
