@@ -1,7 +1,7 @@
 export class loadMoreBtn {
-    constructor({selector, hidden = true}) {
+    constructor({selector, onClick, hidden = true}) {
         this.refs = this.getRefs(selector);
-
+        document.querySelector(selector).addEventListener('click', onClick)
         hidden && this.hide();
     }
     getRefs(selector) {

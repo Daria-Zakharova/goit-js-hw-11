@@ -15,12 +15,11 @@ img {
 
 body {
     margin: 0;
-    padding: 100px 0 0;
+    padding: 110px 0 0;
     font-family: 'Kanit', sans-serif;
     font-size: 14px;
 
-    background-color: rgb(77, 77, 77);
-    background-image: url(./images/dark-metal-seamless-texture-repeating-background-web-page-fill_167184-78.webp);
+    background-color: #666;
     background-size: 420px;
 
 }
@@ -46,7 +45,8 @@ body {
     width: 100%;
     height: 100px;    
     padding: 25px 0;
-    background-image: linear-gradient(#000000c4 30%, rgba(0, 0, 0, 0.274) 80%, transparent 100%);
+    background-color: #222;
+    border-bottom: 4px solid #333;
 }
 
 .search-form {
@@ -108,7 +108,7 @@ body {
     height: 50px;
     border-radius: 50%;
     border: 1px #090909 solid;
-    background: linear-gradient(145deg, #171717, #444245);
+    background: linear-gradient(145deg, #232323cc, #444245);
     box-shadow: inset 1px 1px 0 #7d7c7e, inset -1px -1px 0 #1c1c1c;
     color: #c2c2c2;
     transition: box-shadow 300ms linear;
@@ -121,7 +121,7 @@ body {
 }
 
 .button:not([disabled]):hover {
-    background: linear-gradient(-185deg, #131313, #444245);
+    background: linear-gradient(-185deg, #202020cc, #444245);
     box-shadow: inset -1px -1px 0 #5e5e5e, inset 1px 1px 0 #1c1c1c;
     color: #ffffff;
 }
@@ -160,12 +160,18 @@ body {
     overflow: hidden;    
 }
 
+ .gallery__img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+} 
+
 .gallery__card a {
     min-height: 100%;
 }
 
 .gallery__card:hover {
-    box-shadow: 0 2px 5px rgba(0,0,0,0.5), 0 4px 6px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 3px 1px #222;
 }
 
 @media screen and (min-width: 481px) {
@@ -182,6 +188,11 @@ body {
 @media screen and (min-width: 1024px) {
     .gallery__card {
         flex-basis: calc((100% - 30px)/4);
+    }
+
+    .gallery__img {
+        width: 300px;
+        height: 200px;
     }
 }
 
@@ -202,8 +213,7 @@ body {
     height: 3em;
     display: flex;
     justify-content: space-between;
-    background-image: linear-gradient(145deg, #00000028 0%, #ffffff46 100%), url(./images/dark-metal-seamless-texture-repeating-background-web-page-fill_167184-78.webp);
-    background-size: cover;
+    background-color: #aaab;
 }
 
 .gallery__info-item {
@@ -220,7 +230,7 @@ body {
     color: #050505ef;
 }
 
-.gallery__info-item b {
+.gallery__info-type {
     font-weight: 500;
 }
 
@@ -231,10 +241,14 @@ body {
 .end {
     width: fit-content;
     margin: 0 auto;
-    padding: 5px;
     border-radius: 8px;
-    background-image: linear-gradient(145deg, #00000028 0%, #ffffff46 100%), url(./images/dark-metal-seamless-texture-repeating-background-web-page-fill_167184-78.webp);
-    background-size: cover;
+    background-color: #aaab;
+    box-shadow: 1px 1px 3px #222;
+}
+
+.end:not(.hidden) {
+    padding: 5px;
+    margin-bottom: 20px;
 }
 
 @keyframes flow {

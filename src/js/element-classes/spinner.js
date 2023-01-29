@@ -1,16 +1,16 @@
 export class spinner {
 
     constructor(selector) {
-        this.icon = selector.querySelector('.icon');
+        this.icon = document.querySelector(selector);
     }
 
-    loading() {
+    on() {
 
         this.icon.classList.add('loading');
 
     }
 
-    stopLoading() {
+    off() {
         this.icon.classList.remove('loading');
     }
 }
